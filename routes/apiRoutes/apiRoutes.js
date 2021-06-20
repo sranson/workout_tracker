@@ -40,9 +40,10 @@ router.post("/workouts", (req, res) => {
 // addExercise()
 router.put("/workouts/:id", (req, res) => {
   // console.log(req.params.id);
+  id = mongojs.ObjectId(req.params.id)
   db.workouts.update(
     {
-      _id: mongojs.ObjectId(req.params.id)
+      _id: id
     },
     {
       $push: {"exercises": 
