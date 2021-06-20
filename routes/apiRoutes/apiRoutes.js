@@ -23,11 +23,9 @@ router.get("/workouts", (req, res) => {
 
 // createWorkout()   // create a new workout
 router.post("/workouts", async (req, res) => {
-  // console.log(req.body);
     await db.workouts.insert(  
       {
         day: new Date(new Date().setDate(new Date().getDate())),
-        exercises: [req.body],
     }, 
       (error, data) => {
       if (error) {
@@ -72,6 +70,14 @@ router.put("/workouts/:id", (req, res) => {
 
 // getWorkoutsInRange()
 router.get("/workouts/range", (req, res) => {
+  // Get all data from backend to populate the charts
+  db.workouts.find({}, (error, data) => {
+    if (error) {
+      res.send(error);
+    } else {
+      res.json(data);
+    }
+  });
 
 })
 
