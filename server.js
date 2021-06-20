@@ -1,7 +1,8 @@
+const path = require("path");
 const express = require("express");
 const mongojs = require("mongojs");
 const mongoose = require("mongoose");
-
+const routes = require("./routes");
 const PORT = process.env.PORT || 3000
 const app = express();
 
@@ -20,11 +21,10 @@ mongoose.connect(
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use(express.static("public"));
-
+app.use(express.static(path.join(__dirname, "public")));
 
 // routes
-app.use(require("./routes"));
+app.use(routes);
 
 
 app.listen(PORT, () => {

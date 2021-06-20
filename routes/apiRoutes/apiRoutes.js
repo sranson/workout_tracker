@@ -2,6 +2,7 @@ const router = require("express").Router();
 const Workout = require("../../models/Workout");
 const mongojs = require("mongojs");
 
+
 const databaseUrl = "workout";
 const collections = ["workouts"];
 
