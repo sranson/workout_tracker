@@ -26,17 +26,7 @@ router.post("/workouts", ({ body }, res) => {
     db.workouts.insert(  
       {
         day: new Date(new Date().setDate(new Date().getDate())),
-        exercises: [
-        {
-          type: body.type,
-          name: body.name,
-          duration: body.duration,
-          weight: body.weight,
-          reps: body.reps,
-          sets: body.sets,
-          distance: body.distance
-        },
-      ],
+        exercises: [ body ],
     }, 
       (error, data) => {
       if (error) {
@@ -49,16 +39,21 @@ router.post("/workouts", ({ body }, res) => {
 
 
 // addExercise()
-// router.put("/workouts/:id", ({ body }, res) => {
-//   console.log(body);
-//   db.workouts.insert(body, (error, data) => {
-//     if (error) {
-//       res.send(error);
-//     } else {
-//       res.send(data);
-//     }
-//   });
-// })
+router.put("/workouts/:id", ({ body }, res) => {
+  // console.log(body);
+  db.workouts.insert(  
+    {
+      day: new Date(new Date().setDate(new Date().getDate())),
+      exercises: [ body ],
+  }, 
+    (error, data) => {
+    if (error) {
+      res.send(error);
+    } else {
+      res.send(data);
+    }
+  });
+})
 
 
 // getWorkoutsInRange()
