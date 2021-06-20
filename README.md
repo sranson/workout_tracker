@@ -24,7 +24,7 @@ Workout tracker using a Mongo database and a Mongoose schema
 
 
 ## Deployed Site
-[Developer Tech Blog](https://https://sar-workout-tracker.herokuapp.com/)
+[Workout Tracker](https://sar-workout-tracker.herokuapp.com/)
 
 ## Questions
 
