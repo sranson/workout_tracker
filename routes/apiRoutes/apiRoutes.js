@@ -22,11 +22,12 @@ router.get("/workouts", (req, res) => {
 
 
 // createWorkout()   // create a new workout
-router.post("/workouts", ({ body }, res) => {
-    db.workouts.insert(  
+router.post("/workouts", async (req, res) => {
+  // console.log(req.body);
+    await db.workouts.insert(  
       {
         day: new Date(new Date().setDate(new Date().getDate())),
-        exercises: [ body ],
+        exercises: [req.body],
     }, 
       (error, data) => {
       if (error) {
@@ -39,41 +40,34 @@ router.post("/workouts", ({ body }, res) => {
 
 // addExercise()
 router.put("/workouts/:id", (req, res) => {
-  targetWorkout = db.workouts.findOne(
+  db.workouts.update(
     {
       _id: mongojs.ObjectId(req.params.id)
+    },
+    {
+      $push: {"exercises": 
+        {
+          type: req.body.type,
+          name: req.body.name,
+          duration: req.body.duration,
+          weight: req.body.weight,
+          reps: req.body.reps,
+          sets: req.body.sets,
+          distance: req.body.distance
+        }
+     } 
     },
     (error, data) => {
       if (error) {
         res.send(error);
       } else {
-        console.log(data);
-        // db.workouts.update({targetWorkout}, {$set: {"exercises": [req.body]}})   // OLD VERSION
-        db.workouts.update({targetWorkout}, {$push:{ "exercises": req.body}})   // LATEST VERSION
+        res.send(data);
       }
     }
   );
 })
 
 
-
-
-// // addExercise()
-router.put("/workouts/:id", ({ body }, res) => {
-  // console.log(body);
-  db.workouts.insert(  
-    {
-      day: new Date(new Date().setDate(new Date().getDate())),
-      exercises: [ body ],
-  }, 
-    (error, data) => {
-    if (error) {
-      res.send(error);
-    } else {
-      res.send(data);
-    }
-  });
-})
 
 
 // getWorkoutsInRange()
