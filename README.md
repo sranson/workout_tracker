@@ -7,15 +7,15 @@
 Workout tracker using a Mongo database and a Mongoose schema
 
 ## Table of Contents
-[Screenshots](https://github.com/sranson/workout-tracker#Screenshots)
+[Screenshots](https://github.com/sranson/workout_tracker#Screenshots)
 
-[Deployed Site](https://github.com/sranson/workout-tracker#deployed-site)
+[Deployed Site](https://github.com/sranson/workout_tracker#deployed-site)
 
-[Questions](https://github.com/sranson/workout-tracker#Questions)
+[Questions](https://github.com/sranson/workout_tracker#Questions)
 
-[Contributing](https://github.com/sranson/workout-tracker#Contributing)
+[Contributing](https://github.com/sranson/workout_tracker#Contributing)
 
-[License](https://github.com/sranson/workout-tracker#License)
+[License](https://github.com/sranson/workout_tracker#License)
 
 ## Screenshots
 ![Screenshot](public/assets/fitnessTracker1.png) 
