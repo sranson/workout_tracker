@@ -37,8 +37,28 @@ router.post("/workouts", ({ body }, res) => {
     });
 })
 
-
 // addExercise()
+router.put("/workouts/:id", (req, res) => {
+  targetWorkout = db.workouts.findOne(
+    {
+      _id: mongojs.ObjectId(req.params.id)
+    },
+    (error, data) => {
+      if (error) {
+        res.send(error);
+      } else {
+        console.log(data);
+        // db.workouts.update({targetWorkout}, {$set: {"exercises": [req.body]}})   // OLD VERSION
+        db.workouts.update({targetWorkout}, {$push:{ "exercises": req.body}})   // LATEST VERSION
+      }
+    }
+  );
+})
+
+
+
+
+// // addExercise()
 router.put("/workouts/:id", ({ body }, res) => {
   // console.log(body);
   db.workouts.insert(  
