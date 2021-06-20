@@ -22,8 +22,28 @@ router.get("/workouts", (req, res) => {
 
 
 // createWorkout()   // create a new workout
-router.post("/workouts", (req, res) => {
-    console.log('Rendering exercise.html');
+router.post("/workouts", ({ body }, res) => {
+    db.workouts.insert(  
+      {
+        day: new Date(new Date().setDate(new Date().getDate())),
+        exercises: [
+        {
+          type: body.type,
+          name: body.name,
+          duration: body.duration,
+          weight: body.weight,
+          reps: body.reps,
+          sets: body.sets,
+        },
+      ],
+    }, 
+      (error, data) => {
+      if (error) {
+        res.send(error);
+      } else {
+        res.send(data);
+      }
+    });
 })
 
 
