@@ -23,8 +23,8 @@ router.get("/workouts", (req, res) => {
 
 
 // createWorkout()   // create a new workout
-router.post("/workouts", async (req, res) => {
-    await db.workouts.insert(  
+router.post("/workouts", (req, res) => {
+     db.workouts.insert(  
       {
         day: new Date(new Date().setDate(new Date().getDate())),
     }, 
@@ -39,6 +39,7 @@ router.post("/workouts", async (req, res) => {
 
 // addExercise()
 router.put("/workouts/:id", (req, res) => {
+  // console.log(req.params.id);
   db.workouts.update(
     {
       _id: mongojs.ObjectId(req.params.id)
