@@ -34,6 +34,7 @@ router.post("/workouts", ({ body }, res) => {
           weight: body.weight,
           reps: body.reps,
           sets: body.sets,
+          distance: body.distance
         },
       ],
     }, 
