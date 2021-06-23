@@ -3,7 +3,7 @@ const Workout = require("../../models/Workout");
 const mongojs = require("mongojs");
 
 
-const databaseUrl = "workout" || "mongodb://localhost/workouts";
+const databaseUrl = process.env.MONGODB_URI || 'mongodb://localhost/workouts';
 const collections = ["workouts"];
 
 const db = mongojs(databaseUrl, collections);
