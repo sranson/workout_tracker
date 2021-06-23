@@ -34,7 +34,7 @@ Email: salomeranson@gmail.com
 
 ## Contributing
 
-Salome Ranson
+Salome A. Ranson
 
 ## License
 
